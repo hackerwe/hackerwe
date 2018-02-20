@@ -12,54 +12,54 @@ import com.swetake.util.Qrcode;
 
 public class QrcodeUtil {
 	
-	//ĞèÇó£ºÉú²úÒ»¸ö¶şÎ¬Âë Í¼Æ¬ ±£´æÔÚ´ÅÅÌÉÏ
-	//Â·¾¶£¨²»ÊÇ¹Ì¶¨µÄ²ÎÊı£© ¶şÎ¬ÂëÀïÃæ´æ´¢µÄ String
-	//ÄÚÈİ£¨²»ÊÇ¹Ì¶¨µÄ²ÎÊı£©String
+	//éœ€æ±‚ï¼šç”Ÿäº§ä¸€ä¸ªäºŒç»´ç  å›¾ç‰‡ ä¿å­˜åœ¨ç£ç›˜ä¸Š
+	//è·¯å¾„ï¼ˆä¸æ˜¯å›ºå®šçš„å‚æ•°ï¼‰ äºŒç»´ç é‡Œé¢å­˜å‚¨çš„ String
+	//å†…å®¹ï¼ˆä¸æ˜¯å›ºå®šçš„å‚æ•°ï¼‰String
 	public  static void qrcodeImg(String imgPath,String content)
 	{
-		//ÊµÀı»¯Ò»¸öQrcode¶ÔÏó
+		//å®ä¾‹åŒ–ä¸€ä¸ªQrcodeå¯¹è±¡
 		Qrcode qrcode =new Qrcode();
-		//ÁË½â¶şÎ¬ÂëµÄ»ù±¾²ÎÊı 
-		//ÅÅ´íÂÊ 15%
+		//äº†è§£äºŒç»´ç çš„åŸºæœ¬å‚æ•° 
+		//æ’é”™ç‡ 15%
 		qrcode.setQrcodeErrorCorrect('m');
-		//°æ±¾ºÅ 140 140
+		//ç‰ˆæœ¬å· 140 140
 		qrcode.setQrcodeVersion(7);
-		//±àÂë
+		//ç¼–ç 
 		qrcode.setQrcodeEncodeMode('B');
 		
 		
-		//¿ªÊ¼»æÖÆ¶şÎ¬Âë ´´½¨Ò»¸öÍ¼Æ¬BufferedImage
+		//å¼€å§‹ç»˜åˆ¶äºŒç»´ç  åˆ›å»ºä¸€ä¸ªå›¾ç‰‡BufferedImage
 		int width = 140;
 		int height = 140;
-		//»­°å
+		//ç”»æ¿
 		BufferedImage bf = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
-		//´´½¨Ò»¸ö»­±Ê
+		//åˆ›å»ºä¸€ä¸ªç”»ç¬”
 		Graphics2D gs=bf.createGraphics();
-		//¿ªÊ¼»æÖÆ
+		//å¼€å§‹ç»˜åˆ¶
 		
-		//ÉèÖÃ±³¾°É«
+		//è®¾ç½®èƒŒæ™¯è‰²
 		gs.setBackground(Color.white);
 		
-		//ÉèÖÃÇ°¾°É«
+		//è®¾ç½®å‰æ™¯è‰²
 		gs.setColor(Color.black);
 		
-		//»æÖÆÒ»¸ö¾ØĞÎ
+		//ç»˜åˆ¶ä¸€ä¸ªçŸ©å½¢
 		gs.clearRect(0, 0, width, height);
 		
-		//¸ù¾İÄÚÈİ»æÖÆ¶şÎ¬Âë
-		//ÄÃµ½ÄÚÈİ
+		//æ ¹æ®å†…å®¹ç»˜åˆ¶äºŒç»´ç 
+		//æ‹¿åˆ°å†…å®¹
 		try {
-			//ÄÃµ½ÄÚÈİ
+			//æ‹¿åˆ°å†…å®¹
 			byte[] contentbyte =content.getBytes("utf-8");
 			boolean[][] code =qrcode.calQrcode(contentbyte);
-			//Èç¹ûÕâ¸öµØ·½ÎªÕæ£¬¾Í°ÑËüÍ¿ºÚ
+			//å¦‚æœè¿™ä¸ªåœ°æ–¹ä¸ºçœŸï¼Œå°±æŠŠå®ƒæ¶‚é»‘
 			for(int i=0;i<code.length;i++)
 			{
 				for(int j=0;j<code.length;j++)
 				{
 					if(code[j][i])
 					{
-						//»æÖÆÒ»¸öĞ¡ºÚ¾ØĞÎ
+						//ç»˜åˆ¶ä¸€ä¸ªå°é»‘çŸ©å½¢
 						gs.fillRect(j*3+2, i*3+2, 3, 3);
 					}
 				}
@@ -74,7 +74,7 @@ public class QrcodeUtil {
 	
 	}
 	public static void main(String[] args) {
-		qrcodeImg("E:\\×ÔÖÆ±íÇé°ü\\¶şÎ¬Âë.png","³Âì¿ÊÇÖíÍ·");
+		qrcodeImg("E:\\è‡ªåˆ¶è¡¨æƒ…åŒ…\\äºŒç»´ç .png","æˆ‘çˆ±ä½ ");
 	}
 
 
